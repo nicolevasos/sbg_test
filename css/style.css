@@ -1,0 +1,418 @@
+/* Reset default margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body and container setup */
+body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  display: flex; /* Flexbox for body to layout map and panel */
+  flex-direction: row; /* Row direction: map on the left, panel on the right */
+  margin: 0; /* Remove any default margin */
+  overflow: hidden; /* Prevent overflow */
+}
+
+/* Map container */
+#map {
+  flex-grow: 1; /* Make map take up remaining space */
+  height: 100vh; /* Full height */
+  overflow: hidden; /* Prevent overflow in case of zoom or pan */
+  position: relative; /* Make map position relative to the layout */
+  margin-right: 300px; /* Reserve space for the fixed sidebar */
+  top: 0px; /* Desplazar la barra lateral para que no quede encima del encabezado */
+}
+/* Estilo para el encabezado superior */
+/* Estilo para el encabezado superior */
+#map-header {
+  position: fixed; /* Fija la barra en la parte superior */
+  top: 0; /* Alineado al borde superior */
+  left: 0; /* Alineado al borde izquierdo */
+  width: 100%; /* Que ocupe todo el ancho de la pantalla */
+  background-color: #301934; /* Color de fondo */
+  color: white; /* Color del texto */
+  display: flex; /* Flexbox para alinear los elementos */
+  
+  
+  padding: 10px 0; /* Espaciado interno */
+  z-index: 1000; /* Para que esté por encima de otros elementos */
+}
+h1 {
+  flex-grow: 1; /* Hace que el texto ocupe el espacio restante */
+  font-size: 1.9rem; /* Tamaño de la fuente más grande */
+  font-weight: bold; /* Negrita */
+  margin: 0; /* Elimina el margen predeterminado de <h1> */
+  text-align: center; /* Centra el texto dentro del <h1> */
+}
+
+#logo {
+  height: 40px; /* Ajusta el tamaño del logo */
+  margin-left: 20px; /* Un poco de espacio desde el borde izquierdo */
+}
+
+#map-header span {
+  margin-left: 20px; /* Espacio entre el logo y el texto */
+  font-size: 1.5rem; /* Tamaño de la fuente */
+  font-weight: bold; /* Negrita */
+  text-align: center; /* Centra el texto */
+}
+
+/* Espaciado superior para evitar que el contenido quede tapado por la barra */
+body {
+  padding-top: 60px; /* Ajusta el tamaño según el alto de tu barra */
+}
+
+
+
+
+/* Sidebar container with fixed size */
+.sidenav {
+  width: 300px; /* Fixed width for the panel */
+  background-color: rgba(255, 255, 255, 0.8); /* Light transparent background */
+  overflow-y: auto; /* Allow scrolling if content exceeds */
+  padding: 10px;
+  height: 100vh; /* Full height */
+  box-sizing: border-box; /* Ensures padding doesn't break layout */
+  position: fixed; /* Keep the panel fixed to the right */
+  top: 0;
+  right: 0;
+  z-index: 999; /* Ensure it sits on top of the map */
+  top: 60px; /* Desplazar la barra lateral para que no quede encima del encabezado */
+}
+
+/* Style for building information in the panel */
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #333;
+  word-wrap: break-word; /* Allow the title to wrap if it's too long */
+  white-space: normal; /* Allow wrapping */
+  max-width: 100%; /* Ensure title doesn't overflow the panel */
+}
+
+/* Style for individual building items in the panel */
+.building-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  max-width: 100%; /* Ensure items fit within container */
+}
+
+/* Style for headings inside the building item */
+.building-item h4 {
+  font-size: 1rem;
+  margin-bottom: 5px;
+  text-overflow: ellipsis; /* Truncate overflowing text with ellipsis */
+  overflow: hidden;
+  white-space: nowrap; /* Prevent text from wrapping */
+}
+
+/* Style for paragraphs inside the building item */
+.building-item p {
+  font-size: 0.9rem;
+  margin: 3px 0;
+}
+
+/* Layer control box styling */
+.mapboxgl-ctrl-group {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+  max-width: 150px; /* Restrict the box width */
+}
+
+/*Building Button*/
+.mapboxgl-ctrl-group button {
+  width: 100%; /* Make the button full width to prevent text overflow */
+  padding: 8px;
+  background-color: #301934;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 10px;
+  box-sizing: border-box; /* Ensure padding doesn't break layout */
+}
+
+.mapboxgl-ctrl-group button:hover {
+  background-color: #4a1c3c; /* Darker background on hover */
+}
+
+.mapboxgl-ctrl-group button:focus {
+  outline: none; /* Remove outline on focus */
+}
+
+/*POI Button*/
+.mapboxgl-ctrl-group button1 {
+  width: 100%; /* Make the button full width to prevent text overflow */
+  padding: 8px;
+  background-color: #FF5733;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+  box-sizing: border-box; /* Ensure padding doesn't break layout */
+}
+
+.mapboxgl-ctrl-group button1:hover {
+  background-color: rgba(246, 246, 246, 0.327); /* Darker background on hover */
+}
+
+.mapboxgl-ctrl-group button1:focus {
+  outline: none; /* Remove outline on focus */
+}
+
+/*Museums Button*/
+.mapboxgl-ctrl-group button2 {
+  width: 100%; /* Make the button full width to prevent text overflow */
+  padding: 8px;
+  background-color: #008000;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+  box-sizing: border-box; /* Ensure padding doesn't break layout */
+}
+
+.mapboxgl-ctrl-group button2:hover {
+  background-color: rgba(246, 246, 246, 0.327); /* Darker background on hover */
+}
+
+.mapboxgl-ctrl-group button2:focus {
+  outline: none; /* Remove outline on focus */
+}
+
+
+
+.toggle-button {
+  padding: 10px;
+  background-color: #301934;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px; /* Optional: Adds rounded corners */
+  font-size: 16px; /* Optional: Adjusts font size */
+  transition: background-color 0.3s ease; /* Optional: Adds a hover effect */
+}
+
+.toggle-button:hover {
+  background-color: #4e2852; /* Optional: Slightly lighter background on hover */
+}
+
+
+
+/* styles.css */
+
+.welcome-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+  z-index: 1000;
+}
+
+.welcome-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  text-align: center;
+}
+
+.welcome-content h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.welcome-content p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.close-button {
+  background-color: #cbbfce;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  background-color: #cbbfce;
+}
+
+
+
+
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  /* On smaller screens, stack the map and panel vertically */
+  body {
+    flex-direction: column;
+  }
+
+  .sidenav {
+    width: 100%; /* Full width on small screens */
+    position: relative; /* Make panel scrollable when stacked */
+    top: auto;
+    right: auto;
+    height: 30vh; /* Allow the panel height to adjust */
+  }
+
+  #map {
+    width: 100%; /* Full width on smaller screens */
+    height: 50vh; /* Limit map height */
+    margin-right: 0; /* No margin on small screens */
+  }
+}
+
+.building-item.highlight {
+  background-color: #f0f8ff; /* Light blue highlight */
+  border: 2px solid #75677d; /* Blue border */
+  border-radius: 5px;
+  padding: 5px;
+}
+
+
+/* Main controls container */
+#map-controls {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+/* The control box that contains all elements (slider, buttons) */
+#control-box {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  transition: all 0.3s ease-in-out;
+  max-width: 300px; /* Limit the max width */
+  width: 100%;
+  opacity: 1; /* Fully visible by default */
+  visibility: visible; /* Make sure it's visible initially */
+}
+
+/* When control box is minimized, only show the gear icon */
+#control-box.minimized {
+  width: 50px; /* Just enough space for the gear button */
+  padding: 5px;
+  height: 50px;
+  opacity: 0; /* Hide the entire box when minimized */
+  visibility: hidden; /* Ensure itâ€™s not clickable or rendered */
+  box-shadow: none; /* Remove shadow when minimized */
+  display: none; /* Completely hide it */
+}
+
+/* The maximize button (gear icon) */
+.maximize-btn {
+  background-color: transparent;
+  border: none;
+  color: #75677d;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 6px;
+  left: 10px;
+  z-index: 20; /* Make sure the button is above the map */
+}
+
+.maximize-btn:hover {
+  color: #75677d;
+}
+
+/* Styling for the range slider and button */
+#map-controls .control-group {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  
+}
+
+#map-controls label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+#map-controls input[type="range"] {
+  width: 100%;
+  cursor: pointer;
+}
+
+#map-controls span {
+  display: block;
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+#map-controls .rotate-controls {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allow the buttons to wrap if needed */
+  gap: 5px; /* Ensure space between the buttons */
+}
+
+#map-controls button {
+  background-color: #75677d;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  min-width: 45px; /* Prevent squeezing the button too much */
+  flex-grow: 1; /* Allow buttons to grow and fit within the available space */
+}
+
+#map-controls button:hover {
+  background-color: #75677d;
+}
+
+#map-controls button i {
+  font-size: 18px;
+}
+
+#map-controls button[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 600%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
