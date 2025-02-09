@@ -18,7 +18,7 @@ body {
 /* Map container */
 #map {
   flex-grow: 1; /* Make map take up remaining space */
-  height: 100vh; /* Full height */
+  height: 94vh; /* Full height */
   overflow: hidden; /* Prevent overflow in case of zoom or pan */
   position: relative; /* Make map position relative to the layout */
   margin-right: 300px; /* Reserve space for the fixed sidebar */
@@ -140,7 +140,7 @@ h3 {
   cursor: pointer;
   font-size: 12px;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   box-sizing: border-box; /* Ensure padding doesn't break layout */
 }
 

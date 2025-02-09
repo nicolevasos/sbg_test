@@ -1,72 +1,53 @@
-<html>
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Salzburg Survival Guide</title>
-<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-<link href="https://api.mapbox.com/mapbox-gl-js/v3.9.4/mapbox-gl.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map</title>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-    <div id="map-header">
-        <img src="images/NS-Logo.png" alt="Salzburg Logo" id="logo">
-         <h1>  Salzburg Survival Guide</h1>
-      </div>
-      
-    <!-- Sidebar with building information -->
-    <div class="sidenav" id="info-panel">
-        
-        <h3>Buildings in View</h3>
-        <!-- Filter dropdown -->
-        <label for="filter-type">Filter by Type:</label>
-        <select id="filter-type">
-            <option value="all">All</option>
-            <option value="cafe">Cafe</option>
-            <option value="peak">Restaurant</option>
-            <option value="library">Library</option>
-            
-        </select>
-        <div><br></divgit push -u origin main
->
-        <!-- Building list -->
-        <div id="building-list"></div>
-    </div>
-
-    <!-- Map container -->
-    <div id="map"></div>
-
-
+  <div id="map-header">
+    <img src="images/NS-Logo.png" alt="Salzburg Logo" id="logo">
+     <h1>  Salzburg Survival Guide</h1>
+  </div>
     <div id="map-controls">
-        <div id="control-box" class="control-box">
-          <div class="control-group">
-            <label for="pitch-slider">Tilt (Pitch)</label>
-            <input type="range" id="pitch-slider" min="0" max="60" step="1" value="45">
-            <span id="pitch-value">45°</span>
-          </div>
-          <div class="control-group">
-            <label>Rotate</label>
-            <div class="rotate-controls">
-              <button id="bearing-left" title="Rotate Left">
-                <i class="fa fa-arrow-left"></i> <!-- Left arrow icon -->
-              </button>
-              <button id="bearing-right" title="Rotate Right">
-                <i class="fa fa-arrow-right"></i> <!-- Right arrow icon -->
-              </button>
-            </div>
-          </div>
-        </div>
+       
         
         <button id="maximize-3d-btn" class="maximize-btn">
           <i class="fa fa-cogs"></i> <!-- Gear icon -->
         </button>
       </div>
+<div id="map"></div>
+<!-- Sidebar with building information -->
+<div class="sidenav" id="info-panel">
+        
+  <h3>Buildings in View</h3>
+  <!-- Filter dropdown -->
+  <label for="filter-type">Filter by Type:</label>
+  <select id="filter-type">
+      <option value="all">All</option>
+      <option value="cafe">Cafe</option>
+      <option value="peak">Restaurant</option>
+      <option value="library">Library</option>
       
-    <!-- Load Mapbox GL JS -->
-    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
+  </select>
+  <div><br></div>
+
+
+<!-- Include the building information container -->
+<div id="building-list"></div>
+
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
 
     <!-- Link to external JavaScript -->
     <script src="js/main.js"></script>
+
 
 </body>
 </html>

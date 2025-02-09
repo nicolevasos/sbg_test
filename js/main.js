@@ -39,6 +39,7 @@ var welcomeBoxHTML = `
 // Append the welcome box to the body
 document.body.insertAdjacentHTML('beforeend', welcomeBoxHTML);
 
+
 /*     Load map     */
 
 map.on('load', function () {
@@ -49,51 +50,10 @@ map.on('load', function () {
     const maximize3dBtn = document.getElementById('maximize-3d-btn');
     const controlsContainer = document.getElementById('control-box');
   
-    /*     3d Controler     */
-    let isMinimized = false;
-  
-    // Toggle between minimized and expanded states
-    maximize3dBtn.addEventListener('click', function () {
-      if (isMinimized) {
-        controlsContainer.classList.remove('minimized'); // Expand the control box
-        maximize3dBtn.innerHTML = '<i class="fa fa-cogs"></i>'; // Gear icon
-      } else {
-        controlsContainer.classList.add('minimized'); // Minimize the control box
-        maximize3dBtn.innerHTML = '<i class="fa fa-cogs"></i>'; // Gear icon
-      }
-      isMinimized = !isMinimized; // Toggle state
-    });
-  
-    pitchSlider.addEventListener('input', function () {
-      const pitchValue = parseInt(pitchSlider.value, 10);
-      pitchValueDisplay.textContent = `${pitchValue}°`;
-      map.setPitch(pitchValue);
-    });
-  
-    bearingLeftButton.addEventListener('click', function () {
-      let currentBearing = map.getBearing();
-      map.rotateTo(currentBearing - 10, { duration: 500 }); // Rotate by 10 degrees counter-clockwise
-    });
-  
-    bearingRightButton.addEventListener('click', function () {
-      let currentBearing = map.getBearing();
-      map.rotateTo(currentBearing + 10, { duration: 500 }); // Rotate by 10 degrees clockwise
-    });
+ 
   });
 
-// Initialize the state of the control box on page load (minimized by default)
-window.addEventListener('load', function () {
-    const controlBox = document.getElementById('control-box');
-    const maximizeBtn = document.getElementById('maximize-btn');
-    
-    // By default, minimize the control box
-    controlBox.classList.add('minimized');
-  
-    // Toggle button to maximize/minimize the control box
-    maximizeBtn.addEventListener('click', function() {
-      controlBox.classList.toggle('minimized');
-    });
-  });
+
     
 
 /*     Map initialization and layer setup     */
@@ -320,7 +280,7 @@ map.on('load', function () {
                                     <h4>${museum.n_name || 'Unnamed Museum'}</h4>
                                     <p><strong>Schedule:</strong> ${museum.opening_hours || 'N/A'}</p>
                                     <p><strong>Outdoor seating:</strong> ${museum.outdoor_seating || 'N/A'}</p>
-                                    <p><strong>Website:</strong> ${museum.website && building.website !== 'null' 
+                                    <p><strong>Website:</strong> ${museum.website && museum.website !== 'null' 
                                         ? `<a href="${museum.website}" target="_blank">${museum.website}</a>` 
                                         : 'N/A'}</p>
                                 `;
@@ -497,7 +457,7 @@ map.on('load', function () {
                     <h4>${museum.n_name || 'Unnamed Museum'}</h4>
                     <p><strong>Schedule:</strong> ${museum.opening_hours || 'N/A'}</p>
                     <p><strong>Outdoor seating:</strong> ${museum.outdoor_seating || 'N/A'}</p>
-                    <p><strong>Website:</strong> ${museum.website && building.website !== 'null' 
+                    <p><strong>Website:</strong> ${museum.website && museum.website !== 'null' 
                         ? `<a href="${museum.website}" target="_blank">${museum.website}</a>` 
                         : 'N/A'}</p>
                 `;
